@@ -1,12 +1,18 @@
 # Prospector Scanner - ZMK Status Display Device
 
 <p align="center">
-  <img src="https://img.shields.io/badge/version-v2.2.0-green" alt="Version 2.2.0">
+  <img src="https://img.shields.io/badge/version-v2.2.1-green" alt="Version 2.2.1">
   <img src="https://img.shields.io/badge/ZMK-compatible-blue" alt="ZMK Compatible">
   <img src="https://img.shields.io/badge/license-MIT-green" alt="MIT License">
 </p>
 
-**Latest release**: [v2.2.0 Release Notes](docs/RELEASES/v2.2.0/release_notes.md) | [All releases](https://github.com/t-ogura/zmk-config-prospector/releases)
+**Latest release**: [v2.2.1 Release Notes](docs/RELEASES/v2.2.1/release_notes.md) | [All releases](https://github.com/t-ogura/zmk-config-prospector/releases)
+
+### What's New in v2.2.1 (patch from v2.2.0)
+
+**Fix**: Cold-boot peripheral connection failures on multi-peripheral split keyboards. Status advertisement no longer steals radio time from ZMK split scan/connect during peripheral discovery (see [issue #20](https://github.com/t-ogura/zmk-config-prospector/issues/20)).
+
+**Multi-peripheral builds** (e.g. central + right half + trackball): set `CONFIG_PROSPECTOR_EXPECTED_PERIPHERAL_COUNT=2` (or higher) in your keyboard config so the burst/silent cycle stays engaged until all peripherals are up. Default is 1 (typical 2-half split). Standalone keyboards are unaffected.
 
 ### What's New in v2.2.0 (from v2.1.0)
 
@@ -34,7 +40,7 @@
 ```yaml
 - name: prospector-zmk-module
   remote: prospector
-  revision: v2.2.0
+  revision: v2.2.1
   path: modules/prospector-zmk-module
 ```
 
@@ -323,7 +329,7 @@ manifest:
     # Add this:
     - name: prospector-zmk-module
       remote: prospector
-      revision: v2.2.0
+      revision: v2.2.1
       path: modules/prospector-zmk-module
 ```
 
@@ -903,7 +909,7 @@ manifest:
     # Add this:
     - name: prospector-zmk-module
       remote: prospector
-      revision: v2.2.0
+      revision: v2.2.1
       path: modules/prospector-zmk-module
 ```
 
@@ -1054,7 +1060,7 @@ west build -b your_board -- -DSHIELD=your_shield
 
 **Problem**: Display stops updating, becomes unresponsive.
 
-**Solution**: Upgrade to v2.2.0 firmware. This version uses mutex + work handler architecture with data processing separated from display rendering, preventing LVGL thread-safety issues.
+**Solution**: Upgrade to v2.2.0 or later firmware. This version uses mutex + work handler architecture with data processing separated from display rendering, preventing LVGL thread-safety issues.
 
 ### Battery Widget Not Showing
 
@@ -1174,4 +1180,4 @@ For major changes, please open an issue first to discuss what you would like to 
 
 **Questions?** Open an [issue](https://github.com/t-ogura/zmk-config-prospector/issues) or join [ZMK Discord](https://zmk.dev/community/discord/invite).
 
-**Prospector Scanner v2.2.0** - ZMK Status Display Device
+**Prospector Scanner v2.2.1** - ZMK Status Display Device
