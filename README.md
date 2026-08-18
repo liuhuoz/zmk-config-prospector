@@ -1,12 +1,20 @@
 # Prospector Scanner - ZMK Status Display Device
 
 <p align="center">
-  <img src="https://img.shields.io/badge/version-v2.2.1-green" alt="Version 2.2.1">
+  <img src="https://img.shields.io/badge/version-v2.2.2-green" alt="Version 2.2.2">
   <img src="https://img.shields.io/badge/ZMK-compatible-blue" alt="ZMK Compatible">
   <img src="https://img.shields.io/badge/license-MIT-green" alt="MIT License">
 </p>
 
-**Latest release**: [v2.2.1 Release Notes](docs/RELEASES/v2.2.1/release_notes.md) | [All releases](https://github.com/t-ogura/zmk-config-prospector/releases)
+**Latest release**: [v2.2.2 Release Notes](docs/RELEASES/v2.2.2/release_notes.md) | [All releases](https://github.com/t-ogura/zmk-config-prospector/releases)
+
+### What's New in v2.2.2 (patch from v2.2.1)
+
+**Fixes** (keyboard-side module only, scanner unchanged):
+- Uni-body keyboards build again — v2.2.1 failed with `CONFIG_PROSPECTOR_SPLIT_PARTIAL_BURST_MS undeclared` ([issue #24](https://github.com/t-ogura/zmk-config-prospector/issues/24))
+- Split centrals no longer get the burst/silent adv cycle stuck on forever when the peripheral connects before the module initialises — the keyboard now shows up on the scanner continuously instead of flickering in ~10% of the time ([issue #22](https://github.com/t-ogura/zmk-config-prospector/issues/22))
+
+No new config options. Bump the module `revision` to `v2.2.2`, `west update`, rebuild, flash.
 
 ### What's New in v2.2.1 (patch from v2.2.0)
 
@@ -40,7 +48,7 @@
 ```yaml
 - name: prospector-zmk-module
   remote: prospector
-  revision: v2.2.1
+  revision: v2.2.2
   path: modules/prospector-zmk-module
 ```
 
@@ -329,7 +337,7 @@ manifest:
     # Add this:
     - name: prospector-zmk-module
       remote: prospector
-      revision: v2.2.1
+      revision: v2.2.2
       path: modules/prospector-zmk-module
 ```
 
@@ -909,7 +917,7 @@ manifest:
     # Add this:
     - name: prospector-zmk-module
       remote: prospector
-      revision: v2.2.1
+      revision: v2.2.2
       path: modules/prospector-zmk-module
 ```
 
@@ -1180,4 +1188,4 @@ For major changes, please open an issue first to discuss what you would like to 
 
 **Questions?** Open an [issue](https://github.com/t-ogura/zmk-config-prospector/issues) or join [ZMK Discord](https://zmk.dev/community/discord/invite).
 
-**Prospector Scanner v2.2.1** - ZMK Status Display Device
+**Prospector Scanner v2.2.2** - ZMK Status Display Device
